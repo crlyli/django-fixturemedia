@@ -67,4 +67,3 @@ class Command(NoArgsCommand):
                         os.makedirs(dest_dir)
                     self.stdout.write('Copied %s to %s\n' % (fp, final_dest))
                     copy(fixture_path, final_dest)
-                    
