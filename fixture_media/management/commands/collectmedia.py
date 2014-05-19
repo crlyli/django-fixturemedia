@@ -35,7 +35,7 @@ class Command(NoArgsCommand):
         json_fixtures = []
         for fixture_path in app_fixtures:
             try:
-                root, dirs, files = os.walk(fixture_path).next()
+                root, dirs, files = os.walk(fixture_path).__next__()
                 for file in files:
                     if file.rsplit('.', 1)[-1] == 'json':
                         json_fixtures.append((root, os.path.join(root, file)))
@@ -43,7 +43,7 @@ class Command(NoArgsCommand):
                 pass
 
         if options['interactive']:
-            confirm = raw_input("This will overwrite any existing files. Proceed? ")
+            confirm = input("This will overwrite any existing files. Proceed? ")
             if not confirm.lower().startswith('y'):
                 raise CommandError("Media syncing aborted")
 
